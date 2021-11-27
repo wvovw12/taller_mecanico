@@ -1,12 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Soy el home</h1>
-</body>
-</html>
+{% extends 'taller_Serviexpress/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div class="container" style="margin-top: 50px;">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+      <!-- Indicadores -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- Imagenes -->
+      <div class="carousel-inner imagenResponsiva">
+        <div class="carousel-item active">
+          <a href="#"><img src="{% static 'taller_Serviexpress/img/taller1.png' %}" alt="taller1"></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#"><img src="{% static 'taller_Serviexpress/img/taller2.png' %}" alt="taller2"></a>
+        </div>
+        <div class="carousel-item">
+          <a href="#"> <img src="{% static 'taller_Serviexpress/img/taller3.png'%}" alt="taller3"></a>
+        </div>
+      </div>
+
+      <!-- Controles izquierda y derecha -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <ion-icon name="arrow-back-circle" style="font-size: 80px; color: #184483;"></ion-icon>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <ion-icon name="arrow-forward-circle" style="font-size: 80px; color: #184483;"></ion-icon>
+      </a>
+    </div>
+  </div>
+
+  <!--Espacio Productos Destacados-->
+  <!--Barra-->
+  <div class="container" style="margin-top: 50px;">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3 style="margin-bottom: 0px;">Servicios Destacados</h3>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-sm-4">
+        <hr style="background-color: #184483; height: 8px;">
+      </div>
+      <div class="col-sm-8">
+        <hr style="background-color: #ffd50d; height: 8px;">
+      </div>
+    </div>
+    <!--Productos-->
+    <!--<div class="row" style="margin-top: 50px;">
+    {% for producto in productos  %}
+      <div class="col-sm-4 text-center">
+        <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{{producto.imagen.url}}"
+            alt="Producto"></a>
+        <p>{{producto.descripcion}}</p>
+        <p style="margin-bottom: 0px;">Pago en efectivo</p>
+        <b style="color: orange; font-size: larger;">${{producto.valor}}</b>
+      </div>
+      {% endfor %}
+  </div>-->
+  <div class="row" style="margin-top: 50px;">
+      <div class="col-sm-4 text-center">
+        <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{%static 'taller_Serviexpress/img/cambioLlantas.png' %}"
+            alt="Producto"></a>
+            <p><b>Cambio de Llantas</b></p>
+            <p style="margin-bottom: 0px;"><b>Pago en efectivo</b></p>
+        <b style="color: orange; font-size: larger;">$20.000</b>
+      </div>
+    <div class="col-sm-4 text-center">
+      <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{%static 'taller_Serviexpress/img/cambioLlantas.png' %}"
+          alt="Producto"></a>
+          <p><b>Cambio de Llantas</b></p>
+          <p style="margin-bottom: 0px;"><b>Pago en efectivo</b></p>
+      <b style="color: orange; font-size: larger;">$20.000</b>
+    </div>
+    <div class="col-sm-4 text-center">
+      <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{%static 'taller_Serviexpress/img/cambioLlantas.png' %}"
+          alt="Producto"></a>
+      <p><b>Cambio de Llantas</b></p>
+      <p style="margin-bottom: 0px;"><b>Pago en efectivo</b></p>
+      <b style="color: orange; font-size: larger;">$20.000</b>
+    </div>
+    <div class="col-sm-4 text-center" style="margin-top:50px;">
+      <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{%static 'taller_Serviexpress/img/cambioLlantas.png' %}"
+          alt="Producto"></a>
+          <p><b>Cambio de Llantas</b></p>
+          <p style="margin-bottom: 0px;"><b>Pago en efectivo</b></p>
+      <b style="color: orange; font-size: larger;">$20.000</b>
+    </div>
+    <div class="col-sm-4 text-center" style="margin-top:50px;">
+        <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{%static 'taller_Serviexpress/img/cambioLlantas.png' %}"
+            alt="Producto"></a>
+            <p><b>Cambio de Llantas</b></p>
+            <p style="margin-bottom: 0px;"><b>Pago en efectivo</b></p>
+        <b style="color: orange; font-size: larger;">$20.000</b>
+      </div>
+      <div class="col-sm-4 text-center" style="margin-top:50px;">
+        <a href="#"><img class="img-thumbnail img-fluid card-productos" src="{%static 'taller_Serviexpress/img/cambioLlantas.png' %}"
+            alt="Producto"></a>
+            <p><b>Cambio de Llantas</b></p>
+        <p style="margin-bottom: 0px;"><b>Pago en efectivo</b></p>
+        <b style="color: orange; font-size: larger;">$20.000</b>
+      </div>
+</div>
+  <!--distribuidores-->
+  <div class="container" style="margin-top: 50px;">
+    <h3>Busca tu distribuidor más cercano</h3>
+    <hr style="background-color: #184483 ; height: 8px;">
+    <div class="imagen-background">
+      <div class="row justify-content-center">
+        <div class="col-sm-7">
+          <!--Necesito centrar el input de otra forma-->
+          <div class="input-container" style="margin-top: 133px;">
+            <input style="border:none;" type="text" placeholder="Ingresa tu ubicación"
+              class="form-control pac-target-input" autocomplete="off">
+            <a href="#">
+              <ion-icon style="font-size: 40px; color: #184483;" name="navigate-circle"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+{% endblock contenido %}

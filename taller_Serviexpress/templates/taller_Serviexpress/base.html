@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="{% static 'taller_Serviexpress/css/Estilos.css' %}">
+  <!-- JavaScript y Jquery -->
+  <!--<script src="{% static 'app_lmgas/js/main.js' %}"></script>
+  <script src="{% static 'app_lmgas/js/cart.js' %}"></script>
+  <script type="text/javascript" src="{% static 'app_lmgas/js/jquery-3.6.0.min.js' %}"></script>-->
+
+  <title>{% block title %}LMGAS - Inicio {%endblock%}</title>
+</head>
+
+<body>
+
+  <!-- Nav top -->
+  <div class="topnav">
+    <nav id="top" class="navbar navbar-expand-md navbar-light">
+      <!-- Brand -->
+
+      <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static '' %}"
+          alt="logo Serviexpress"></a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul id="listatop" class="navbar-nav ml-auto">
+          {% block topnav %}
+
+          {% if user.is_authenticated %}
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <ion-icon class="user-icon" name="person-circle-outline"></ion-icon> Cerrar Sesión
+            </a>
+          </li>
+          {% if user.is_staff %}
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <ion-icon name="people-outline"></ion-icon>Administrador
+            </a>
+          </li>
+          {%else%}
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <ion-icon name="people-outline"></ion-icon>Mi cuenta
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <ion-icon name="cart-outline"></ion-icon> Carro ({{cant}})
+            </a>
+          </li>
+          {% endif %}
+          {% else %}
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <ion-icon class="user-icon" name="person-circle-outline"></ion-icon> Iniciar Sesión
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <ion-icon name="person-add-outline"></ion-icon>Registrarse
+            </a>
+          </li>
+          {% endif %} 
+          {% endblock topnav %}
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+
+
+  <!-- Links -->
+
+  <div class="row no-gutters">
+    <!-- Sección productos -->
+    <div class="col-sm-2 ">
+      <nav class="navbar navbar-expand-sm navbar-dark mt-5" id="productos">
+        <ul class="navbar-nav">
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle lead" href="#" id="navbardrop" data-toggle="dropdown">
+              Servicios
+            </a>
+            <ul id="productos-menu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'listaServicios'%}">Servicio 1</a></li>
+              <li><a class="dropdown-item" href="#">Servicio 2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Navbar principal -->
+    <div class="col-sm-8">
+      <nav class="navbar navbar-expand-sm navbar-dark mt-5" id="navprincipal">
+        <ul id="nav1" class="navbar-nav ml-lg-5">
+          <li class="nav-item">
+            <a class="nav-link lead text-light" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link lead text-light" href="#">Distribuidores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link lead text-light" href="#">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link lead text-light" href="#">Servicio al cliente</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 bg-primary text-light border-primary"
+            type="submit">Buscar</button>
+        </form>
+      </nav>
+    </div>
+  </div>
+
+  {% block contenido %}
+
+
+  {% endblock contenido %}
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="text-center text-lg-start">
+    <!-- Grid container -->
+    <div id="pie" class="p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase text-light">Acerca de Serviexpress</h5>
+
+          <ul id="sin-sub" class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-light">Quienes somos</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Información para el inversionista</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Trabaja con nosotros</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Portal Contratistas y Proveedores</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Portal distribuidores</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase text-light">Normativas</h5>
+
+          <ul id="sin-sub" class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-light">Modelo de Prevención de Delitos</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Línea de denuncias Serviexpress</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Decretos de Ley</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase text-light mb-0">Ayuda</h5>
+
+          <ul id="sin-sub" class="list-unstyled">
+            <li>
+              <a href="#!" class="text-light">Sucursal virtual</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Ayuda</a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">Contacto</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase text-light">Redes Sociales</h5>
+
+          <ul id="sin-sub" class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-light">
+                <ion-icon name="logo-instagram" style="margin-right: 10px; font-size: 20px;"></ion-icon>Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">
+                <ion-icon name="logo-facebook" style="margin-right: 10px; font-size: 20px;"></ion-icon>Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#!" class="text-light">
+                <ion-icon name="logo-twitter" style="margin-right: 10px; font-size: 20px;"></ion-icon>Twitter
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-dark" href="index.html">www.serviexpress.cl</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+
+</html>
